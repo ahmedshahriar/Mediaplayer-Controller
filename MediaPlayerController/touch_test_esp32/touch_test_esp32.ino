@@ -11,22 +11,82 @@
    T8 = GPIO33
    T9 = GPIO32 */
 
-uint8_t led = 18;
+const int analogPin = 15 ;
+int val = 0;
+int prev_val = 400 ;
 
 void setup() {
-  ledcAttachPin(led, 1);    //Configure variable led, pin 18 to channel 1
-  ledcSetup(1, 12000, 8);   // 12 kHz PWM and 8 bit resolution
-  ledcWrite(1, 100);        // Write a test value of 100 to channel 1
   Serial.begin(115200);
   Serial.println("Testing ledc 12 channel 1");
 }
 void loop()
 {
-  int touch_data = touchRead(T0);
-  int led_data = 0;
-  Serial.print("Touch sensor value:");
-  Serial.println(touch_data);
-  led_data = 1.6 * touch_data;
-  ledcWrite(1, (led_data));
+  int touch_data_power = touchRead(T9); 
+  
+  int touch_data_p1 = touchRead(T8);
+  int touch_data_p2 = touchRead(T5);
+  int touch_data_p3 = touchRead(T6);
+  int touch_data_p4 = touchRead(T7);
+
+  //volume
+  val = analogRead(analogPin);
+  int dif = val- prev_val;
+
+  if(dif >= 250 || dif <= -250){
+
+    Serial.println(val);
+    delay(50);
+    }
+
+  
+  
+  
+
+  
+  if(touch_data_power<15){
+      delay(50);
+    if(touch_data_power<15){
+      Serial.println("a");
+      delay(1500);
+      }
+    }
+  
+    if(touch_data_p1<15){
+    delay(50);
+    if(touch_data_p1<15){
+      Serial.println("b");
+      delay(1500);
+      }
+    }
+    
+   if(touch_data_p2<15){
+    delay(50);
+    if(touch_data_p2<15){
+      Serial.println("c");
+      delay(1500);
+      }
+    }
+    
+   if(touch_data_p3<15){
+    delay(50);
+    if(touch_data_p3<15){
+      Serial.println("d");
+      delay(1500);
+      }
+    }
+
+    if(touch_data_p4<15){
+    delay(50);
+    if(touch_data_p4<15){
+      Serial.println("e");
+      delay(1500);
+      }
+    }
+    
+
+
+  
+//  led_data = 1.6 * touch_data;
+//  ledcWrite(1, (led_data));
   delay(100);
 }
