@@ -1,13 +1,13 @@
-import pygame, sys
-import time
+# import pygame, sys
+# import time
 
 
-pygame.mixer.init()
-pygame.init()
-
-sounda= pygame.mixer.Sound("beat.wav")
-
-sounda.play()
+# pygame.mixer.init()
+# pygame.init()
+#
+# sounda= pygame.mixer.Sound("beat.wav")
+#
+# sounda.play()
 
 
 # pygame.mixer.pre_init(frequency=44100, size=-16, channels=1)
